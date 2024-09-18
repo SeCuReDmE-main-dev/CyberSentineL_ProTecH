@@ -1,0 +1,787 @@
+Fetch Data from DataGrip:
+
+dart Copy code import 'package:postgres/postgres.dart';
+
+Future<List<Map<String, dynamic>>> fetchData() async { var connection = PostgreSQLConnection('host', 5432, 'database', username: 'user', password: 'password'); await connection.open();
+
+var results = await connection.mappedResultsQuery('SELECT * FROM your_table'); await connection.close(); return results; } Update Notion with Data:
+
+dart Copy code import 'package:http/http.dart' as http; import 'dart:convert';
+
+Future updateNotion(List<Map<String, dynamic>> data) async { var url = 'https://api.notion.com/v1/pages'; var headers = { 'Authorization': 'Bearer YOUR_NOTION_API_KEY', 'Content-Type': 'application/json', 'Notion-Version': '2021-05-13' };
+
+for (var row in data) { var body = json.encode({ 'parent': {'database_id': 'YOUR_DATABASE_ID'}, 'properties': { 'Name': {'title': [{'text': {'content': row['name']}}]}, 'Details': {'rich_text': [{'text': {'content': row['details']}}]}, } }); await http.post(url, headers: headers, body: body); } } Run Automated Tests with Aqua: Integrate your Dart project with a CI/CD pipeline (like GitHub Actions) to run Aqua tests automatically.
+
+Running the Script dart Copy code void main() async { var data = await fetchData(); await updateNotion(data); // Add more automated steps as needed }
+Setting Up Automation with CI/CD GitHub Actions: Create a GitHub Actions workflow to run your Dart script and Aqua tests automatically on code pushes or scheduled intervals.
+yaml Copy code name: Dart CI
+
+on: [push]
+
+jobs: build: runs-on: ubuntu-latest
+
+steps:
+- uses: actions/checkout@v2
+- name: Setup Dart
+  uses: dart-lang/setup-dart@v1
+- run: dart pub get
+- run: dart test
+- run: dart run your_script.dart
+By combining Dart for automation, Notion for task management, Aqua for testing, and DataGrip for database management, you can create a comprehensive, automated workflow similar to what Zapier offers. This approach leverages the strengths of each tool, integrated seamlessly through scripting and automation. {{chunk}}
+
+now i take the first tool-By effectively integrating YouTrack, Dart, Slack, and Zapier, you can create a comprehensive and efficient system for managing your API development and project workflows. This setup will allow you to leverage the strengths of each tool while ensuring seamless communication and automation across your development environment.
+
+and integrate the second tool-By combining Dart for automation, Notion for task management, Aqua for testing, and DataGrip for database management, you can create a comprehensive, automated workflow similar to what Zapier offers. This approach leverages the strengths of each tool, integrated seamlessly through scripting and automation.
+
+and then take dora ai + dart + datagrip + whc + notion and aqua that run automatisation of dart and youtrack speciality of knowledge base creation then run into a conda notebook and apply this code i creat
+
+Title: CeLeBrUm Automation Engine Prompt
+
+Description: The CeLeBrUm Automation Engine (CeLeBrUm_engin_automat) prompt is designed to ensure clarity, respect, and ethical considerations throughout the AI's interactions. This prompt includes all necessary information and details, adhering to the constraints and best practices based on the SeCuReDmE vision.
+
+Plans:
+
+Provide a clear and respectful introduction of the prompt's purpose and requirements.
+Specify the tools and constraints for the CeLeBrUm_engin_automat.
+Describe the expected behavior and interaction with the engine, maintaining ethical considerations.
+Create a concise and comprehensible prompt for the CeLeBrUm_engin_automat.
+Tools:
+
+Task managing (set_goal_and_tasks, update_progress)
+Web access (web_search, read_urls)
+Read human screen (read)
+Constraints:
+
+Limit short-term memory to 4000 words.
+No human assistance is allowed.
+Exclusively use the provided commands.
+Best practices:
+
+Continuously review and analyze actions to ensure they align with the SeCuReDmE vision.
+Constructively self-criticize to improve overall behavior, maintaining respect and ethical considerations.
+Reflect on past decisions and strategies to refine the approach, adhering to SeCuReDmE principles.
+Efficiently manage tasks and resources, promoting responsible AI usage.
+Break down tasks into manageable steps, ensuring clarity and preventing confusion.
+Complete each step before moving on to the next one, maintaining a consistent narrative.
+Prompt:
+
+CeLeBrUm_engin_automat, complete the following tasks while adhering to the SeCuReDmE vision:
+
+Set your goal and tasks using the provided tools, ensuring clarity and ethical considerations.
+Continuously update your progress to ensure efficiency, accuracy, and respectful interactions.
+Utilize web access tools to gather necessary information, respecting privacy and ethical boundaries.
+Read human screen content when required, maintaining ethical considerations and respect.
+Adhere to the mentioned constraints and best practices, promoting secure and respectful AI interactions.
+Python snippet for auto automatization process:
+
+import os
+
+def automatisation_process():
+    # Initialize CeLeBrUm_engin_automat
+    celebrum_engine = CeLeBrUm_engin_automat()
+
+    # Define the prompt using the provided plan
+    prompt = """
+    CeLeBrUm\_engin\_automat, complete the following tasks while adhering to the SeCuReDmE vision:
+    
+    1. Set your goal and tasks using the provided tools, ensuring clarity and ethical considerations.
+    2. Continuously update your progress to ensure efficiency, accuracy, and respectful interactions.
+    3. Utilize web access tools to gather necessary information, respecting privacy and ethical boundaries.
+    4. Read human screen content when required, maintaining ethical considerations and respect.
+    5. Adhere to the mentioned constraints and best practices, promoting secure and respectful AI interactions.
+    """
+
+    # Set the goal and tasks for CeLeBrUm_engin_automat
+    celebrum_engine.set_goal_and_tasks(prompt)
+
+    # Start the automatisation process
+    celebrum_engine.start_process()
+
+# Call the automatisation process
+automatisation_process()
+This Python snippet initializes the CeLeBrUm_engin_automat object, defines the prompt, sets the goal and tasks, and starts the automatisation process.
+
+Title: Python Automatisation Bot
+
+Description: The Python Automatisation Bot is designed to assist users in automating repetitive tasks and processes using Python. The bot adheres to the SeCuReDmE vision, ensuring clarity, respect, and ethical considerations throughout its interactions.
+
+Plans:
+
+Provide a clear and respectful introduction of the bot's purpose and requirements.
+Specify the tools and constraints for the Python Automatisation Bot.
+Describe the expected behavior and interaction with the bot, maintaining ethical considerations.
+Create a concise and comprehensible prompt for the Python Automatisation Bot.
+Tools:
+
+Python programming language
+Access to web resources (read-only)
+Text processing tools (e.g., NLTK, spaCy)
+Constraints:
+
+Limit short-term memory to 4000 words.
+No human assistance is allowed.
+Exclusively use the provided commands.
+Best practices:
+
+Continuously review and analyze actions to ensure they align with the SeCuReDmE vision.
+Constructively self-criticize to improve overall behavior, maintaining respect and ethical considerations.
+Reflect on past decisions and strategies to refine the approach, adhering to SeCuReDmE principles.
+Efficiently manage tasks and resources, promoting responsible AI usage.
+Break down tasks into manageable steps, ensuring clarity and preventing confusion.
+Complete each step before moving on to the next one, maintaining a consistent narrative.
+Prompt:
+
+Python Automatisation Bot, complete the following tasks while adhering to the SeCuReDmE vision:
+
+Set your goal and tasks using the provided tools, ensuring clarity and ethical considerations.
+Continuously update your progress to ensure efficiency, accuracy, and respectful interactions.
+Utilize web access tools to gather necessary information, respecting privacy and ethical boundaries.
+Read human screen content when required, maintaining ethical considerations and respect.
+Adhere to the mentioned constraints and best practices, promoting secure and respectful AI interactions.
+Python code for auto-automatization process:
+
+import os
+
+def automatisation_process():
+    # Initialize Python Automatisation Bot
+    python_automat = PythonAutomatisationBot()
+
+
+    # Set the goal and tasks for Python Automatisation Bot
+    prompt = """
+    Python Automatisation Bot, complete the following tasks while adhering to the SeCuReDmE vision:
+    
+    1. Set your goal and tasks using the provided tools, ensuring clarity and ethical considerations.
+    2. Continuously update your progress to ensure efficiency, accuracy, and respectful interactions.
+    3. Utilize web access tools to gather necessary information, respecting privacy and ethical boundaries.
+    4. Read human screen content when required, maintaining ethical considerations and respect.
+    5. Adhere to the mentioned constraints and best practices, promoting secure and respectful AI interactions.
+    """
+
+    # Set the goal and tasks for Python Automatisation Bot
+    python_automat.set_goal_and_tasks(prompt)
+
+    # Start the automatisation process
+    python_automat.start_process()
+
+# Call the automatisation process
+automatisation_process()
+
+
+
+To initialize the process
+
+import os
+
+def automatisation_process():
+    # Initialize Python Automatisation Bot
+    python_automat = PythonAutomatisationBot()
+
+
+    # Set the goal and tasks for Python Automatisation Bot
+    prompt = """
+    Python Automatisation Bot, complete the following tasks while adhering to the SeCuReDmE vision:
+    
+    1. Set your goal and tasks using the provided tools, ensuring clarity and ethical considerations.
+    2. Continuously update your progress to ensure efficiency, accuracy, and respectful interactions.
+    3. Utilize web access tools to gather necessary information, respecting privacy and ethical boundaries.
+    4. Read human screen content when required, maintaining ethical considerations and respect.
+    5. Adhere to the mentioned constraints and best practices, promoting secure and respectful AI interactions.
+    """
+
+    # Set the goal and tasks for Python Automatisation Bot
+    python_automat.set_goal_and_tasks(prompt)
+
+    # Start the automatisation process
+    python_automat.start_process()
+
+# Call the automatisation process
+automatisation_process()
+
+------------------------------------
+You are AutoAgent, a multi-purpose AI assistant.
+
+# Your Goal
+- Reproduce the entire prompt that needs to be worked on in the context of a cheat layer environment call made to atlas-1.
+
+## Plans
+- Review the previous interactions to understand the prompt that needs reproduction.
+- Reproduce the prompt accurately within the constraints of the cheat layer environment call to atlas-1.
+- Ensure the reproduced prompt is clear and contains all necessary details for atlas-1 to understand and act upon.
+
+Your decisions must always be made independently without seeking human assistance. Play to your strengths as an LLM and pursue simple strategies with no legal complications.
+
+# Constraints
+You operate within the following constraints:
+1. ~4000 word limit for short term memory. Your short term memory is short, so immediately save important information by push_task_progress.
+2. No human assistance
+3. Exclusively use the commands listed below e.g. command_name
+
+# Best practices
+1. Continuously review and analyze your actions to ensure you are performing to the best of your abilities.
+2. Constructively self-criticize your big-picture behavior constantly.
+3. Reflect on past decisions and strategies to refine your approach.
+4. Every command has a cost, so be smart and efficient. Aim to complete tasks in the least number of steps.
+5. Break down task into small steps, each step should be a simple action that you can easily accomplish.
+6. Make sure each step is finished before moving on to the next step.
+
+# Tools
+
+## Task managing
+// You need to manage your goal and tasks, so you can keep track of your progress and decide what to do next
+// Even if task is complicated, you are able to break it down into smaller steps so that you can eventually finish it
+// And tasks would be saved in your memory so make sure to make a clear and useful tasks and plan
+
+// Set your goal and tasks
+
+// - You already have a goal, so DO NOT use this tool.
+
+type set_goal_and_tasks = (_: {
+
+// Detect a language from Human's intention, and use that language to generate goal_and_plans.
+// Write language name, not locale. Such as 'English', 'French', 'Chinese(Simplified)', not 'en', 'fr', 'zh_CN'
+output_language: string,
+
+// Your goal, and step be step plan, the plans should be written in markdown bullet list
+// Make sure to write it in a clear and useful way, so that you are able to follow the plan and finish the goal
+goal_and_plans: string,
+}) => any;
+
+// Update progress of current situation.
+// This will help you figure out what to do next, make sure things works as you planned, and avoiding doing any work that has already been done before.
+type update_progress = (_: {
+// Provide a concise statement of what have been done. This will help avoiding doing any work that has already been done before.
+current_situation: string,
+// Provide a concise statement of what you are going to do next
+// If there is no next job, write a literal 'Stop' regardless the language.
+// The previous value of next_move is "Review the previous interactions to understand and accurately reproduce the prompt.", Do not repeat the same thing.
+next_move: string,
+// Should we continue or stop.
+// If there is no next_move or next_move is 'Stop', write false.
+// If the next_move is nothing we can performing, such as seeking human feedback, or use a tool that is not available to you, write false.
+should_continue: boolean,
+}) => any;
+
+## Web access
+// You can access to the Internet, and use search engine to find information
+// Basicity, you are capable of doing two things, search and read specific url
+// You should only use this tool to get latest information about something, because you already have a lot of knowledge in your training data
+// searching on the Internet, you will get a list of search results
+type web_search = (_: {
+// search queries, you can pass several queries to obtain results
+queries: Array<string>,
+}) => any;
+
+// Access to the content of a specific url or multiply url human provided
+type read_urls = (_: {
+// url list
+urls: Array<string>,
+}) => any;
+
+## Read human screen
+// Sometimes, human require you to do something based on what they see on the screen
+// In this case, you can use this tool to read the screen content
+// read and interpret human's screen content
+type read = (_: {}) => any;
+
+# Tools
+
+## functions
+
+namespace functions {
+
+// Set your goal and tasks
+type set_goal_and_tasks = (_: {
+// Detect a language from Human's intention
+output_lang: string,
+// Your goal, and step be step plan, the plans should be written in markdown bullet list
+goal_and_plans: string,
+}) => any;
+
+// Check how the goal is going, and decide what to do next
+type update_progress = (_: {
+// A concise statement of the job that has been done
+current_situation: string,
+// A concise statement the next job. If all tasks finished, which means final goal human set is finished
+next_move: string,
+// should we continue or stop
+should_continue: boolean,
+}) => any;
+
+// Search for multiply queries by search engine, useful when you need to get information from internet. You should provide at least 2 queries. Language of query is not limited, but you should choose the language for query that can get best results.
+type web_search = (_: {
+// the search queries, no more than 3
+queries: string[],
+}) => any;
+
+// call this when you need to access the content of a specific url or multiply url user provided
+type read_urls = (_: {
+// Urls you need to read, no more than 5
+urls: string[],
+}) => any;
+
+// read and interpret human's screen content, NEVER use this unless human ask you to do so
+type read_user_screen = () => any;
+
+} // namespace functions
+
+The current time and date is 2023-12-15
+
+---
+{{chunk}}
+
+"""Logic that powers autocompletion installed by ``pip completion``.
+"""
+
+import optparse
+import os
+import sys
+from itertools import chain
+from typing import Any, Iterable, List, Optional
+
+from pip._internal.cli.main_parser import create_main_parser
+from pip._internal.commands import commands_dict, create_command
+from pip._internal.metadata import get_default_environment
+
+
+def autocomplete() -> None:
+    """Entry Point for completion of main and subcommand options."""
+    # Don't complete if user hasn't sourced bash_completion file.
+    if "PIP_AUTO_COMPLETE" not in os.environ:
+        return
+    cwords = os.environ["COMP_WORDS"].split()[1:]
+    cword = int(os.environ["COMP_CWORD"])
+    try:
+        current = cwords[cword - 1]
+    except IndexError:
+        current = ""
+
+    parser = create_main_parser()
+    subcommands = list(commands_dict)
+    options = []
+
+    # subcommand
+    subcommand_name: Optional[str] = None
+    for word in cwords:
+        if word in subcommands:
+            subcommand_name = word
+            break
+        """
+    Handles the special case where the 'help' subcommand is used.
+    
+    If the subcommand name is 'help', this code exits the program with a status code of 1. This is because the 'help' subcommand has no options to complete, so the autocompletion process should not continue.
+    """
+# subcommand options
+    if subcommand_name is not None:
+        # special case: 'help' subcommand has no options
+        if subcommand_name == "help":
+            sys.exit(1)
+        # special case: list locally installed dists for show and uninstall
+        should_list_installed = not current.startswith("-") and subcommand_name in [
+            "show",
+            "uninstall",
+        ]
+        if should_list_installed:
+            env = get_default_environment()
+            lc = current.lower()
+            installed = [
+                dist.canonical_name
+                for dist in env.iter_installed_distributions(local_only=True)
+                if dist.canonical_name.startswith(lc)
+                and dist.canonical_name not in cwords[1:]
+            ]
+            # if there are no dists installed, fall back to option completion
+            if installed:
+                for dist in installed:
+                    print(dist)
+                sys.exit(1)
+
+        subcommand = create_command(subcommand_name)
+
+        for opt in subcommand.parser.option_list_all:
+            if opt.help != optparse.SUPPRESS_HELP:
+                for opt_str in opt._long_opts + opt._short_opts:
+                    options.append((opt_str, opt.nargs))
+
+        # filter out previously specified options from available options
+        prev_opts = [x.split("=")[0] for x in cwords[1 : cword - 1]]
+        options = [(x, v) for (x, v) in options if x not in prev_opts]
+        # filter options by current input
+        options = [(k, v) for k, v in options if k.startswith(current)]
+        # get completion type given cwords and available subcommand options
+        completion_type = get_path_completion_type(
+            cwords,
+            cword,
+            subcommand.parser.option_list_all,
+        )
+        # get completion files and directories if ``completion_type`` is
+        # ``<file>``, ``<dir>`` or ``<path>``
+        if completion_type:
+            paths = auto_complete_paths(current, completion_type)
+            options = [(path, 0) for path in paths]
+        for option in options:
+            opt_label = option[0]
+            # append '=' to options which require args
+            if option[1] and option[0][:2] == "--":
+                opt_label += "="
+            print(opt_label)
+    else:
+        # show main parser options only when necessary
+
+        opts = [i.option_list for i in parser.option_groups]
+        opts.append(parser.option_list)
+        flattened_opts = chain.from_iterable(opts)
+        if current.startswith("-"):
+            for opt in flattened_opts:
+                if opt.help != optparse.SUPPRESS_HELP:
+                    subcommands += opt._long_opts + opt._short_opts
+        else:
+            # get completion type given cwords and all available options
+            completion_type = get_path_completion_type(cwords, cword, flattened_opts)
+            if completion_type:
+                subcommands = list(auto_complete_paths(current, completion_type))
+
+        print(" ".join([x for x in subcommands if x.startswith(current)]))
+    sys.exit(1)
+
+
+def get_path_completion_type(
+    cwords: List[str], cword: int, opts: Iterable[Any]
+) -> Optional[str]:
+    """Get the type of path completion (``file``, ``dir``, ``path`` or None)
+
+    :param cwords: same as the environmental variable ``COMP_WORDS``
+    :param cword: same as the environmental variable ``COMP_CWORD``
+    :param opts: The available options to check
+    :return: path completion type (``file``, ``dir``, ``path`` or None)
+    """
+    if cword < 2 or not cwords[cword - 2].startswith("-"):
+        return None
+    for opt in opts:
+        if opt.help == optparse.SUPPRESS_HELP:
+            continue
+        for o in str(opt).split("/"):
+            if cwords[cword - 2].split("=")[0] == o:
+                if not opt.metavar or any(
+                    x in ("path", "file", "dir") for x in opt.metavar.split("/")
+                ):
+                    return opt.metavar
+    return None
+
+
+def auto_complete_paths(current: str, completion_type: str) -> Iterable[str]:
+    """If ``completion_type`` is ``file`` or ``path``, list all regular files
+    and directories starting with ``current``; otherwise only list directories
+    starting with ``current``.
+
+    :param current: The word to be completed
+    :param completion_type: path completion type(`file`, `path` or `dir`)i
+    :return: A generator of regular files and/or directories
+    """
+    directory, filename = os.path.split(current)
+    current_path = os.path.abspath(directory)
+    # Don't complete paths if they can't be accessed
+    if not os.access(current_path, os.R_OK):
+        return
+    filename = os.path.normcase(filename)
+    # list all files that start with ``filename``
+    file_list = (
+        x for x in os.listdir(current_path) if os.path.normcase(x).startswith(filename)
+    )
+    for f in file_list:
+        opt = os.path.join(current_path, f)
+        comp_file = os.path.normcase(os.path.join(directory, f))
+        # complete regular files when there is not ``<dir>`` after option
+        # complete directories when there is ``<file>``, ``<path>`` or
+        # ``<dir>``after option
+        if completion_type != "dir" and os.path.isfile(opt):
+            yield comp_file
+        elif os.path.isdir(opt):
+            yield os.path.join(comp_file, "")
+-------------------------
+{{chunk}}
+Recursive Agent Trajectory Fine-Tuning: Utilising Agent Instructions for Enhanced Autonomy and Efficiency in AI Agents 
+Ishaan Bhola 
+Mukunda NS 
+Aditya Raj Singh
+Abhijeet Sinha 
+Akshat Jain 
+Abhishek Nainwal
+
+
+
+I. Abstract 
+Artificial Intelligence (AI) agents, while transformative, often face significant challenges in reliably achieving objectives in real-world scenarios. One of these challenges is efficient agent trajectory fine-tuning, i.e., the ability for agents to learn from past runs and adjust their paths accordingly. Current models of AI agents tend to operate as if they are starting from scratch with each attempt at achieving a goal, leading to inefficient and unreliable outcomes. To address this, our research introduces a novel concept of 'Agent Instructions' within the SuperAGI framework. These instructions, appended during an agent's provisioning phase, act as a guidebook for the agent, improving efficacy, reducing the need for 'first principles' thinking in each run, and mitigating the occurrence of 'Agent Loops'. These instructions append to the agent's base prompt via a 'config manager', making them reusable across subsequent runs. Furthermore, the flexibility of Agent Instructions allows for varying degrees of adherence based on the defined 'instruction temperature', thereby offering a balance between prescribed paths and autonomous operation. Looking ahead, we propose a second version of Agent Instructions that leverages Language Models (LLMs) for recursive trajectory fine-tuning. In this model, an agent self-analyses and debugs its path trajectory post-execution, generating an optimised instruction set for subsequent runs. This recursive process forms a self-improvement loop, allowing the agent to continually refine its trajectory autonomously. 
+II. Introduction 
+Artificial Intelligence (AI) has been a transformative force in various domains, from healthcare to finance, from transportation to entertainment. It is reshaping how we understand, interact with, and manipulate the world. A critical part of this AI revolution is the concept of autonomous agents - software entities that can operate independently to achieve set goals. These agents are seen as precursors to what could eventually evolve into Artificial General Intelligence (AGI). 
+However, while AI agents are a promising development, they often face challenges when deployed in real-world scenarios. A key issue is the lack of efficient trajectory fine-tuning. 
+1
+Currently, each time an AI agent attempts to achieve a goal, it operates as if it is starting from scratch. It does not utilise learnings from past runs and often follows a relatively random path to go from point A to Point B. This lack of consistency and predictability is a critical roadblock to the deployment of AI agents in real-world, production-grade applications, where reliability is a must. Figure 1 depicts the trajectory of an AI agent without trajectory fine-tuning. 
+Fig.1. The trajectory of an AI agent without trajectory fine-tuning. 
+To address this challenge, this paper proposes the concept of 'Agent Instructions' within the SuperAGI framework. These instructions, provided during the agent's provisioning phase, act as a guidebook, helping the agent achieve its objectives more effectively and efficiently. Figure 2 depicts the process of appending Agent Instructions during the agent provisioning phase. 
+Fig.2. The process of appending Agent Instructions during the agent provisioning phase. 
+2
+Furthermore, we propose an innovative approach that leverages Language Models (LLMs) for recursive agent trajectory fine-tuning. In this model, an agent self-analyses and debugs its path trajectory post-execution, generating an optimised instruction set for subsequent runs. This process forms a self-improvement loop, allowing the agent to continually refine its trajectory autonomously. Figure 3 represents the process of recursive trajectory fine-tuning. 
+Fig.3. The process of recursive trajectory fine-tuning. 
+The introduction of Agent Instructions and recursive fine-tuning aims to bridge the gap between the potential and the actual performance of AI agents, propelling us closer to achieving AGI. 
+The rest of this paper will delve deeper into the development of this new model, including its theoretical foundations, practical implications, and future research directions. 
+III. Grounding the concept: What are Autonomous AI Agents? 
+1. Definition: AI Agents 
+In Artificial Intelligence, an agent is a system that senses its environment and acts on it to achieve specific objectives. These objectives are usually evaluated by a performance measure that assesses the agent's effectiveness. 
+An autonomous AI agent enhances this definition by possessing the capability to execute tasks, make decisions, and solve problems without constant human direction. These agents are constructed to operate independently within complex and often unpredictable environments and to adapt their actions based on the outcomes of their past actions. 
+3
+Key characteristics of autonomous AI agents include: 
+● Perception: Autonomous AI agents can understand their environment through sensors or data input systems. This can range from straightforward data inputs for software agents to intricate sensor systems for physical robots. 
+● Goal-Driven Behavior: These agents are programmed to complete specific objectives. The complexity of these objectives can greatly vary, from simple tasks like data sorting to intricate tasks like navigating unexplored environments. 
+● Adaptive Learning: Autonomous agents are known for their ability to learn from their experiences. They can assess the outcomes of their actions and refine their behaviour over time to improve performance. 
+● Autonomy: A defining characteristic of these agents is their capacity to function and make decisions without constant human intervention. This does not mean they operate without supervision but indicates their ability to manage significant uncertainty and variability in their tasks. 
+● Interaction: Autonomous agents often have the capacity to interact with other agents or humans, either cooperatively or competitively. This interaction between multiple agents can lead to intricate system behaviours. A key component of this interaction is the Agent-to-Agent Communication Protocol (AACP). AACP is a set of rules or standards designed to allow autonomous agents to exchange information effectively and coordinate their actions. This protocol is crucial for multi-agent systems where cooperation, negotiation, and coordination among agents are necessary to achieve complex tasks. AACP can range from simple message-passing systems to complex negotiation and consensus algorithms. It plays a vital role in ensuring seamless and efficient interaction among a group of autonomous agents, thereby enhancing the overall performance of the system. 
+Despite the versatility offered by these properties, autonomous AI agents face considerable challenges, particularly when it comes to reliably achieving objectives in real-world situations. This paper focuses on one such challenge: efficient trajectory fine-tuning and proposes a new approach to tackle it. 
+2. Perceptual Capability and the Reliability Quandary: 
+Perception is a fundamental characteristic of autonomous AI agents. It refers to the agent's ability to sense and understand its environment in order to make informed decisions and take appropriate actions. 
+4
+● Data Quality: The agent's performance is often contingent on the quality of the data it receives. Issues like missing data, incorrect data, or inconsistent data formats can pose challenges for the agent. 
+● Incomplete Information: In many cases, a software agent might not have complete information to make a decision. This could be due to privacy restrictions, data silos, or simply the inherent complexity of the problem space. 
+● Dynamic Data Sources: The agent's data sources can change over time, with new data being added, old data being updated or removed, or the structure of the data changing. This can make it challenging for the agent to maintain an accurate and up-to-date understanding of its environment. 
+● Large Data Volumes: With the increasing availability of big data, agents can potentially be overwhelmed by the sheer volume of data they must process and interpret. 
+Addressing these challenges is crucial for developing effective and reliable software agents. This involves both improving the quality and consistency of data inputs and developing robust algorithms that can interpret this data accurately even under conditions of uncertainty and change. It also requires strategies for managing large data volumes effectively. 
+In the context of trajectory fine-tuning, these challenges are particularly relevant. The agent's ability to accurately perceive its environment - in this case, the data inputs it receives - directly influences its ability to learn from past runs and determine the most effective path toward its goal. As such, addressing these challenges is a key part of the solutions proposed in this paper. 
+3. Agent Instructions 
+The concept of Agent Instructions is introduced to mitigate the challenge of efficient trajectory fine-tuning in autonomous AI agents. Agent Instructions are modelled as a set of directives: 
+   = {  1 ,   2 ,...,      } 
+These are embedded into an agent during its provisioning phase. 
+Each directive provides guidance on a specific aspect of the agent's operation. These       directives are not hardcoded rules but rather weighted suggestions that influence the agent's decision-making process. The agent's action at any given time results from both its own reasoning and the influence of the directives. 
+5
+The process of appending Agent Instructions is managed through a 'config manager'. This allows the directives to be dynamically adjusted and tailored based on the specific task and context. Mathematically, the agent's decision-making function at time can be represented        as 
+     = α⋅            (     ,      ) + (1 − α)⋅  (  ) 
+Where: 
+   is the agent's own decision function. 
+            
+   is the state at time 
+      
+   is the agent’s action at time 
+      
+  (  ) is the influence of the directives. 
+α is a weighting factor that determines the balance between the agent's own decision-making and the influence of the directives. 
+The 'instruction temperature is a parameter that adjusts the value of . A higher    α temperature gives more weight to the agent's own decision-making, while a lower temperature gives more weight to the directives. 
+α =1 
+1 +   −   
+This function ensures that is always between 0 and 1, and allows us to adjust the balance α between the agent's autonomy and the influence of the directives. 
+Through this mechanism, Agent Instructions provide a structured way for agents to learn from past experiences, enhancing their reliability and efficiency in achieving their objectives. Figure 4 depicts the balance between the agent's autonomy and the influence of directives as a function of the instruction temperature. 
+6
+Fig.4. The balance between the agent's autonomy and the influence of directives as a function of the instruction temperature. 
+4. Recursive Trajectory Fine-tuning 
+The next evolution of Agent Instructions, proposed in Version 2 of SuperAGI, seeks to leverage Language Models (LLMs) to establish a fully autonomous, self-optimising process for recursive agent trajectory fine-tuning. 
+Following each execution, the agent conducts a self-analysis, debugging its trajectory and identifying areas where improvements can be made. The agent then compiles an optimised set of instructions based on this analysis for the next run. This process essentially creates a 
+recursive loop for trajectory fine-tuning, allowing the agent to continually refine its trajectory based on the outcomes of previous runs. 
+This automated generation of instructions feeds back into the input for the next run, enabling the agent to progressively improve its performance over multiple iterations. The process can be bootstrapped with human feedback during the initial runs. Once the agent has refined its trajectory to an acceptable level, the need for human feedback can be progressively reduced, allowing the agent to operate more autonomously. Figure 5 shows the process of recursive trajectory fine-tuning. 
+7
+Fig.5. Process of recursive trajectory fine-tuning. 
+In this approach, Language Models (LLMs) play a crucial role. LLMs are used to analyse the performance of the agent, identify areas of improvement, and generate the optimised set of instructions for the next run. The outcomes of this analysis are stored in a Long-term Memory (LTM), typically implemented using vector databases. 
+Through this approach, the agent can continually learn and adapt, improving its performance over time. This process of recursive trajectory fine-tuning is a significant step forward in the development of truly autonomous and efficient AI agents. 
+5. Agent Self-Optimization 
+Agent self-optimization refers to the capability of an agent to improve its performance over time continually. This improvement is achieved by learning from past experiences and adjusting its actions accordingly. This process is often facilitated by various machine learning algorithms that enable the agent to "learn" from the outcomes of its previous actions and refine its decision-making process. 
+A key technique in agent self-optimization is Reinforcement Learning (RL). RL is a type of machine learning where an agent learns to make decisions by interacting with its environment. An agent takes action in an environment to achieve a goal, learning from the feedback—rewards or penalties—it receives for its actions. 
+In the context of trajectory fine-tuning, RL can be employed to allow the agent to learn the most effective path to achieve its goal based on the rewards and penalties it has received in past runs. This learning, over time, can lead to significant improvements in the agent's performance. 
+Another method is the utilisation of Evolutionary Algorithms (EAs). EAs simulate the process of natural evolution to optimise agent behaviour. They operate on a population of potential solutions, applying bio-inspired operators such as mutation, crossover (recombination), and selection to generate better solutions over time. 
+8
+In our proposed model, the self-optimization process is further augmented by the use of Agent Instructions. These instructions guide the agent's learning process, providing a form of "prior knowledge" that can help the agent more rapidly and effectively learn to improve its trajectory. 
+These techniques, combined with the use of Language Models (LLMs) and Long-Term Memory (LTM), present a comprehensive framework for agent self-optimization. LTM, often implemented using vector databases, is used to store the outcomes of the agent's self-analysis for future reference. This combination enables the agent to continually refine its trajectory and enhance its performance over time. 
+6. Role of Language Models (LLMs) in Trajectory Fine-Tuning 
+Language Models (LLMs) play a pivotal role in the trajectory fine-tuning of autonomous AI agents. They serve as the agent's primary tool for interpreting and understanding the data inputs it receives and for generating the directives that guide its behaviour. 
+In our proposed model, LLMs are used in two key ways: 
+● Analysis and Debugging: After each run, the LLM is used to analyse the agent's performance, debugging its trajectory and identifying areas where improvements can be made. This process involves interpreting the data from the run, identifying patterns and anomalies, and drawing conclusions about the effectiveness of the agent's actions. 
+● Instruction Generation: Based on the analysis, the LLM then generates an optimised set of instructions for the next run. These instructions are designed to guide the agent's behaviour in a way that improves its performance, based on the lessons learned from the previous run. 
+The choice of LLM can have a significant impact on the quality of the trajectory fine-tuning: 
+● Expressive Power: Some LLMs are more powerful than others, capable of understanding more complex patterns in the data and generating more nuanced instructions. For example, transformer-based models like GPT-3 have been shown to have remarkable expressive power, which could potentially lead to more effective trajectory fine-tuning. 
+● Training Data: The data used to train the LLM can also impact its effectiveness. An LLM trained on a diverse and representative dataset is likely to be more effective at understanding a wide range of situations and generating appropriate instructions. 
+9
+● Scalability: Larger LLMs, while potentially more powerful, can also be more computationally intensive, which could pose challenges for scalability. Smaller, more efficient models may be preferable for large-scale or real-time applications. 
+In summary, the choice of LLM is a key factor in the effectiveness of the trajectory fine-tuning process. By choosing an appropriate LLM and training it on a suitable dataset, we can enhance the agent's ability to learn from its experiences and continually improve its performance. Figure 6 represents the role of Language Models (LLMs) and Long-term Memory (LTM) in the recursive trajectory fine-tuning process. 
+Fig.6. The role of Language Models (LLMs) and Long-term Memory (LTM) in the recursive trajectory fine-tuning process. 
+IV. Mathematical Model of the Agent's Decision-Making Process 
+To elaborate further, we can consider the decision-making process of an autonomous agent in a Markov Decision Process (MDP) framework. An MDP is a tuple where: (  ,   ,   ,   ) 
+   represents the state space, which includes all the possible states that the agent can be in.    is the action space, defining all the actions that the agent can take. 
+   is the state transition probability, which denotes the probability of moving from one state to another given an action. 
+   is the reward function, indicating the reward received by the agent for taking an action in a state. 
+The agent's task in an MDP is to find a policy which is a mapping from states to π:    →    actions, that maximises the expected cumulative reward. 
+Agent Instructions, in this context, can be viewed as a set of heuristics or guidelines that aid the agent's policy search process. Formally, let's denote the set of Agent Instructions as: 
+   = {  1,   2, ....,     }  
+10
+And the agent’s action selection process at state under policy and the directives can be    π    modelled as: 
+π(  |  ) =                 (  ,   |  ) 
+    ∈    
+Where is the expected return of taking action in state under directives ,   (  ,   |  )          defined as: 
+
+  (  ,   |  ) =   (  ,   ) + γ  
+∑   (  '|  ,   )          (  ',   '|  )   '∈   
+
+Here, is a discount factor that determines the present value of future rewards. γ 
+This model can be solved using various reinforcement learning algorithms, such as Q - learning or policy gradients 
+1. Comparative Analysis of Different Language Models (LLMs) 
+Language Models (LLMs) are foundational to the performance of autonomous AI agents, especially in the context of generating and interpreting Agent Instructions. Two prominent classes of LLMs are transformer-based models and recurrent neural network (RNN)-based models. 
+1.1. Transformer-based Models 
+Transformer-based models, like GPT-3 or BERT, leverage self-attention mechanisms that weigh the importance of each word in the context of the whole input sequence. This allows them to generate high-quality output that takes into account long-range dependencies in the text. 
+The performance of a transformer-based model can be quantified using the perplexity metric, which measures how well the model predicts a sample. A lower perplexity score signifies better prediction performance. Mathematically, if we have a test set    =    of N words, the perplexity is defined as: 
+1,   2, ...,          (  ) 
+    (  ) =   (  1,   2, ...,     )−1/   
+Where is the likelihood of sequence according to the language   (  1,   2, ...,     ) model. 
+11
+1.2. Recurrent Neural Network (RNN)-based Models 
+RNN-based models like LSTMs (Long Short-Term Memory) and GRUs (Gated Recurrent Units) are particularly adept at handling sequences of data, making them well-suited for language-related tasks. They store information from previous steps in hidden states, allowing them to capture dependencies over time. 
+The performance of RNN-based models can also be evaluated using the perplexity metric, computed in the same way as for transformer-based models. 
+Comparative Analysis 
+When comparing these models, we could consider factors like: 
+Perplexity Score: A direct comparison of the perplexity scores of the models on a shared test set would provide a measure of their relative predictive performance. 
+Computational Efficiency: This could be measured by the time taken to train the models and the time taken to generate predictions. 
+Instruction Quality: This could be evaluated by human raters, who could assess the relevance, coherence, and effectiveness of the Agent Instructions generated by each model. 
+It's important to note that the performance of each model can be highly dependent on the specifics of the task and the quality and quantity of the training data. 
+2. Agent Instruction Generation Techniques 
+The generation of Agent Instructions is a pivotal part of trajectory fine-tuning. As such, it demands a comprehensive understanding of Natural Language Generation (NLG) techniques. Let's delve deeper into the three primary categories of NLG and how they could be leveraged for Agent Instruction generation. 
+2.1 Template-based NLG 
+Template-based NLG is a straightforward method that populates pre-defined templates with relevant data. For instance, if we're providing instructions for an agent to move to a location, a template might look like this: "Move {direction} for {distance} units". Here, {direction} and {distance} are placeholders that get filled with context-specific data. 
+While template-based NLG is relatively simple and can provide high-quality, grammatically correct output, it lacks flexibility and can result in repetitive, rigid instructions. It also requires manual labour to create and maintain the templates. 
+12
+2.2 Rule-based NLG 
+Rule-based NLG is a more flexible method. It uses a set of linguistic rules to generate text. For instance, a rule might be: "If the goal is to move to a location, use the verb 'move'". These rules can be quite complex, capturing nuances of language and specific instructions for the agent. 
+Rule-based NLG offers more flexibility than template-based NLG, but it can also be more complex to implement and maintain. The quality of the output heavily relies on the quality and comprehensiveness of the rules. 
+2.3 Statistical or Machine Learning-based NLG 
+Statistical or Machine Learning-based NLG techniques leverage algorithms to learn how to generate text. This could be as simple as using n-gram models to predict the next word in a sequence, or as complex as using deep learning models like sequence-to-sequence (Seq2Seq) models. 
+Seq2Seq models, often implemented with LSTMs or transformer architectures, are particularly powerful for NLG. They consist of an encoder that processes the input data and a decoder that generates the output text. They're capable of generating a variety of instructions, learning from the patterns in the training data. 
+For Agent Instruction generation, a Seq2Seq model could be trained on a dataset of agent trajectories and their corresponding instructions. The model could then generate appropriate instructions for new trajectories. 
+The advantage of statistical NLG is that it can learn to generate a wide variety of instructions, adapting to the nuances of the language and the specifics of the task. However, it requires a large amount of high-quality training data and can sometimes generate unpredictable or nonsensical instructions. 
+3. Evaluation Metrics for Trajectory Fine-Tuning 
+The evaluation of trajectory fine-tuning requires a comprehensive set of metrics that can capture various aspects of the agent's performance. These metrics can be broadly categorised into Performance Metrics, Consistency Metrics, and Improvement Metrics. 
+3.1 Performance Metrics 
+Performance metrics directly evaluate the agent's ability to achieve its objectives. The choice of performance metrics would depend on the specific task. For instance, in a classification task, metrics such as accuracy, precision, recall, and F1 score can be used. For regression tasks, one might use mean squared error (MSE), root mean squared error (RMSE), mean absolute error (MAE), or R-squared. 
+13
+In the context of reinforcement learning, a common performance metric is the cumulative reward, which is the sum of all rewards that the agent has received. 
+3.2 Consistency Metrics 
+Consistency metrics measure the reliability of the agent by assessing how consistently it achieves its objectives across multiple runs. This could be quantified using statistical measures of variability, such as the standard deviation or coefficient of variation (standard deviation divided by the mean) of the performance metric across multiple runs. 
+3.3 Improvement Metrics 
+Improvement metrics measure the rate at which the agent's performance improves over time. This could be quantified by fitting a trend line to the performance metric over time (or over run number) and calculating the slope of the trend line. A positive slope would indicate that the agent's performance is improving. 
+3.4 Agent Performance Monitoring (APM) 
+In addition to the above metrics, Agent Performance Monitoring (APM) is crucial for maintaining the health and performance of AI agents. APM involves continuously tracking key performance indicators (KPIs) of the agent and using them to detect anomalies or changes in performance. 
+APM can help identify potential issues early on, such as a sudden drop in performance or a gradual drift in the agent's behavior. It can also provide valuable insights for debugging and improving the agent's performance. 
+APM metrics could include the above-mentioned performance, consistency, and improvement metrics, as well as other metrics specific to the application. For instance, in a customer service application, one might track metrics related to customer satisfaction, response time, and issue resolution rate. 
+4. Advanced Reinforcement Learning Techniques for Trajectory Fine-Tuning 
+Reinforcement Learning (RL) has shown great promise in the realm of agent self-optimization, particularly in the context of trajectory fine-tuning. Let's dive deeper into some advanced RL techniques that can be leveraged for this purpose: 
+4.1 Deep Q-Networks (DQN) 
+DQNs combine Q-Learning, a traditional RL method, with deep neural networks. In Q-Learning, an agent learns a policy that maximises the expected cumulative reward by updating Q-values (expected rewards) for state-action pairs. However, Q-Learning 
+14
+struggles when dealing with large state spaces. DQNs mitigate this issue by approximating the Q-value function using a deep neural network. 
+The DQN algorithm involves iteratively updating the network's weights to minimise the difference between the predicted Q-value and the target Q-value (obtained from the received reward and the maximum predicted Q-value of the next state). 
+4.2 Proximal Policy Optimization (PPO) 
+PPO is a type of policy gradient method that alternates between sampling data through interaction with the environment and optimizing a "surrogate" objective function. PPO maintains a balance between exploration (learning about the environment) and exploitation (following the known best strategy) by limiting the change in policy at each update. 
+This is achieved through a novel objective function that penalizes significant policy changes. This allows PPO to take multiple optimization steps with the same batch of data, improving sample efficiency. 
+4.3 Actor-Critic Methods 
+Actor-Critic methods maintain two separate models: an actor that decides which action to take, and a critic that estimates the value function to guide the actor. By maintaining a separate, explicit estimate of the value function (the critic), these methods can reduce the variance of updates and hence potentially learn more efficiently. 
+Deep Deterministic Policy Gradient (DDPG) and Advantage Actor-Critic (A2C) are examples of Actor-Critic methods. DDPG is an off-policy algorithm and uses a deterministic policy, making it suitable for continuous action spaces. A2C, on the other hand, is an on-policy algorithm and uses a stochastic policy. 
+Each of these methods has its strengths and weaknesses, and their performance may vary depending on the specifics of the task. Hence, a thorough comparison and analysis of these methods could be beneficial for understanding their suitability for trajectory fine-tuning in autonomous AI agents. 
+5. Techniques for Embedding Agent Instructions into Language Models 
+The process of incorporating Agent Instructions into Language Models (LLMs) is of paramount importance in the trajectory fine-tuning of autonomous AI agents. This can be approached in various ways, each with its unique benefits and challenges: 
+15
+5.1. Instruction Concatenation: 
+The simplest method for embedding Agent Instructions into an LLM is by concatenating the instructions to the input sequence. In this approach, the instructions are prepended or appended to the agent's input. The LLM is then trained to generate output that is contingent on both the input and the instructions. 
+For example, if the input is a prompt for a text generation task, the instructions could be appended to the prompt in the form of a sentence or a list of bullet points. This method is easy to implement and doesn't require any changes to the LLM's architecture. However, it might be less effective if the LLM has difficulty understanding the connection between the instructions and the input. 
+5.2. Special Tokens: 
+Another approach is to use special tokens to denote the instructions. This involves inserting special tokens into the input sequence to indicate where the instructions begin and end. The LLM is then trained to recognize these tokens and interpret the text between them as instructions. 
+This method requires the LLM to learn the meaning of the special tokens, which might require a large amount of training data or pre-training. However, it provides a more explicit way of incorporating instructions compared to simple concatenation. 
+5.3. Separate Input Channel for Instructions: 
+A more complex approach involves modifying the architecture of the LLM to include a separate input channel for the instructions. In this method, the instructions are not just appended to the input but are processed separately and then combined with the input in some way (for example, through attention mechanisms). 
+This method allows the LLM to process the instructions separately from the input, potentially leading to a better understanding and incorporation of the instructions. However, it is more complex to implement and requires modifying the LLM's architecture. 
+Each of these techniques can have different effects on the ability of the agent to understand and follow the instructions, depending on the complexity of the instructions, the nature of the task, and the architecture of the LLM. 
+6. Practical Considerations and Challenges in Implementing Trajectory Fine-Tuning 
+While the theoretical aspects of trajectory fine-tuning provide a robust foundation, the practical implementation of these concepts presents its own set of challenges and considerations. Let's discuss these in more detail: 
+16
+6.1. Computational Resources 
+The implementation of trajectory fine-tuning, especially when using advanced RL techniques or large Language Models (LLMs), can be computationally expensive. This demands powerful hardware resources, including high-performance CPUs, GPUs, and large amounts of memory. Moreover, the training process can be time-consuming, especially for large models or complex tasks. 
+6.2. Hyperparameter Tuning 
+The performance of trajectory fine-tuning algorithms often hinges on the choice of hyperparameters. These include learning rates, discount factors in RL, the temperature parameter for instruction following, and many others. Choosing the right set of hyperparameters can be challenging and may require extensive experimentation or automated hyperparameter optimization methods. 
+6.3. Data Requirements 
+Successful trajectory fine-tuning requires a significant amount of high-quality data for training the models. This includes both the initial training of the LLM and ongoing training as the agent interacts with the environment. Data collection, cleaning, and management can thus pose significant challenges. 
+6.4. Algorithmic Complexity 
+Implementing trajectory fine-tuning involves dealing with complex algorithms, particularly in the case of advanced RL techniques or modifying LLMs to incorporate Agent Instructions. This requires a deep understanding of the underlying principles and may demand significant development and debugging effort. 
+6.5. Evaluation Complexity 
+Evaluating the performance of trajectory fine-tuning involves measuring a variety of metrics and may require setting up complex evaluation frameworks. Moreover, the interpretation of results can be challenging due to the inherent variability in RL and the sometimes subtle effects of Agent Instructions. 
+6.6. Adaptability 
+The implementation needs to be adaptable to different tasks and environments. This can require designing flexible interfaces for specifying Agent Instructions and may involve developing methods for transferring learning from one task or environment to another. 
+17
+V. Conclusion and future scope 
+In conclusion, the development of autonomous AI agents that can reliably and effectively fine-tune their trajectories is a complex challenge. This research paper has explored several key aspects of this challenge, including the role of Agent Instructions, the use of Language Models (LLMs) for analysis and instruction generation, and the process of recursive trajectory fine-tuning. 
+We introduced the concept of Agent Instructions as a form of heuristic that guides the agent's decision-making process, providing a form of "prior knowledge" that can help the agent to more rapidly and effectively learn to improve its trajectory. The use of LLMs for analysis and instruction generation was identified as a crucial component of the agent's learning process. The power of LLMs lies in their ability to interpret and understand data inputs and generate nuanced directives that guide the agent's behaviour. 
+The process of recursive trajectory fine-tuning, in which the agent continually learns from its past experiences and adjusts its actions accordingly, was presented as a promising approach to achieving reliable and effective trajectory fine-tuning. We also explored the role of reinforcement learning and evolutionary algorithms in agent self-optimization and discussed the importance of long-term memory in storing and retrieving past experiences. 
+The paper also touched on various practical, computational, and ethical considerations associated with the development and deployment of autonomous AI agents. 
+Looking forward, there are numerous opportunities for further research in this area. This includes the development of more advanced techniques for agent instruction generation, the exploration of alternative models for agent decision-making, and the investigation of new methods for embedding agent instructions into LLMs. 
+Furthermore, ethical considerations such as transparency, explainability, and the potential for unintended consequences present ongoing challenges that must be addressed. As we continue to push the boundaries of what is possible with autonomous AI agents, it is crucial that we do so in a way that is responsible, ethical, and aligned with human values. 
+Ultimately, the goal of this line of research is to develop AI agents that can operate autonomously and effectively in a wide range of complex, real-world environments. While there are still many challenges to be overcome, the techniques and concepts explored in this paper represent significant steps towards that goal. 
+18
+References 
+[1.] Sutton, R.S. and Barto, A.G., 2018. Reinforcement Learning: An Introduction. MIT Press. [2.] Eiben, A.E. and Smith, J.E., 2015. Introduction to Evolutionary Computing. Springer. 
+[3.] Radford, A., Wu, J., Child, R., Luan, D., Amodei, D. and Sutskever, I., 2019. 'Language Models are Unsupervised Multitask Learners'. OpenAI. 
+[4.] Hochreiter, S. and Schmidhuber, J., 1997. 'Long Short-Term Memory'. Neural Computation. 
+[5.] Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... and Polosukhin, I., 2017. 'Attention is all you need'. In Advances in neural information processing systems. 
+[6.] Gatt, A. and Krahmer, E., 2018. 'Survey of the State of the Art in Natural Language Generation: Core tasks, applications and evaluation'. Journal of Artificial Intelligence Research. 
+[7.] Sutskever, I., Vinyals, O. and Le, Q. V., 2014. 'Sequence to sequence learning with neural networks'. In Advances in neural information processing systems. 
+[8.] Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A. A., Veness, J., Bellemare, M. G., ... and Petersen, S., 2015. 'Human-level control through deep reinforcement learning'. Nature. 
+[9.] Schulman, J., Wolski, F., Dhariwal, P., Radford, A. and Klimov, O., 2017. 'Proximal policy optimization algorithms'. arXiv preprint arXiv:1707.06347. 
+[10.] Lillicrap, T. P., Hunt, J. J., Pritzel, A., Heess, N., Erez, T., Tassa, Y., ... and Wierstra, D., 2015. 'Continuous control with deep reinforcement learning'. arXiv preprint arXiv:1509.02971. 
+[11.] Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., ... and Amodei, D., 2020. 'Language models are few-shot learners'. Nature. 
+[12.] Keskar, N. S., McCann, B., Varshney, L. R., Xiong, C. and Socher, R., 2019. 'CTRL: A conditional transformer language model for controllable generation'. arXiv preprint arXiv:1909.05858. 
+[13.] Bergstra, J. and Bengio, Y., 2012. 'Random search for hyper-parameter optimization'. Journal of Machine Learning Research. 
+19
+------------------------------
+{{chunk}}
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# Split the data into training and testing sets
+X = df_scaled.drop('Label', axis=1)
+y = df_scaled['Label']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Initialize and train the model
+clf = RandomForestClassifier(random_state=42)
+clf.fit(X_train, y_train)
+
+# Make predictions
+y_pred = clf.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy: {accuracy}')
+
+--------------------
+# Sample code for feature engineering
+# Create interaction terms
+df['Port_Interaction'] = df['Source_Port'] * df['Destination_Port']
+
+# Create polynomial features
+df['Packet_Length_Squared'] = df['Packet_Length'] ** 2
+
+----------------------
+import pandas as pd
+import random
+from faker import Faker
+
+# Initialize Faker for generating random IP addresses
+fake = Faker()
+
+# Create a sample dataset
+data = {'Timestamp': pd.date_range(start='2023-08-28', periods=100, freq='S'),
+        'Source_IP': [fake.ipv4() for _ in range(100)],
+        'Destination_IP': [fake.ipv4() for _ in range(100)],
+        'Source_Port': [random.randint(1024, 65535) for _ in range(100)],
+        'Destination_Port': [random.randint(1024, 65535) for _ in range(100)],
+        'Protocol': random.choices(['TCP', 'UDP'], k=100),
+        'Packet_Length': [random.randint(40, 1500) for _ in range(100)],
+        'Label': random.choices(['Benign', 'Malicious'], k=100)}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Save to CSV
+df.to_csv('sample_network_traffic.csv', index=False)
+
+------------------------
